@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
                 activeFgColor: Colors.white,
                 inactiveFgColor: Colors.white,
                 initialLabelIndex: currentBtn,
-                labels: ['Global', 'Per Country'],
+                labels: ['Global', 'Per Country', 'Ranking'],
                 onToggle: (index) {
                   setState(() {
                     currentBtn = index;
@@ -40,9 +40,13 @@ class _HomeState extends State<Home> {
                     if (currentBtn == 1) {
                       statTitle = 'Per Country Stats';
                       Navigator.of(context).pushReplacementNamed('country');
-                    } else {
-                      statTitle = 'Global Stats';
+                    } else if(currentBtn == 2){
+                      statTitle = 'Cases Ranks Per Country';
+                      Navigator.of(context).pushReplacementNamed('rank');
                     }
+                      else {
+                        statTitle = 'Global Stats';
+                      }
                   });
                 },
               ),
