@@ -1,3 +1,4 @@
+import 'package:covid19/pages/country.dart';
 import 'package:covid19/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19/pages/home.dart';
@@ -8,6 +9,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     routes: {
       'home' : (context) => Home(),
+      'country': (context) => Country(),
     },
     theme: new ThemeData(
       primaryColor: Color(0xFFff2b4a),
