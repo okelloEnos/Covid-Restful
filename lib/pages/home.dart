@@ -1,7 +1,15 @@
+import 'dart:convert';
+import 'package:covid19/service/countryService.dart';
+import 'package:covid19/model/countryModel.dart';
+import 'package:covid19/model/world.dart';
+import 'package:covid19/pages/country.dart';
+import 'package:covid19/pages/rank.dart';
+import 'package:covid19/service/globalCases.dart';
 import 'package:covid19/widget/dash.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   @override
@@ -9,8 +17,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String statTitle = 'Load...';
+  String statTitle = 'Global Statistics';
   int currentBtn = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,20 +46,26 @@ class _HomeState extends State<Home> {
                 inactiveFgColor: Colors.white,
                 initialLabelIndex: currentBtn,
                 labels: ['Global', 'Per Country', 'Ranking'],
-                onToggle: (index) {
-                  setState(() {
-                    currentBtn = index;
+                onToggle: (index) async {
+                  // List<CountryName> countryList = await retrievedCountryList();
 
+                  setState((){
+                    currentBtn = index;
                     if (currentBtn == 1) {
-                      statTitle = 'Per Country Stats';
-                      Navigator.of(context).pushReplacementNamed('country');
-                    } else if(currentBtn == 2){
+                        statTitle = 'Per Country Stats';
+
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Country()),
+                        );
+                      // Navigator.of(context).push('country');
+                    } else if (currentBtn == 2) {
                       statTitle = 'Cases Ranks Per Country';
-                      Navigator.of(context).pushReplacementNamed('rank');
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Ranking()));
+                    } else {
+                      statTitle = 'Global Stats';
                     }
-                      else {
-                        statTitle = 'Global Stats';
-                      }
                   });
                 },
               ),
@@ -55,9 +74,19 @@ class _HomeState extends State<Home> {
             Text(
               "$statTitle",
               style: TextStyle(
-                  fontSize: 20.0, wordSpacing: 2.0, fontWeight: FontWeight.bold),
+                  fontSize: 20.0,
+                  wordSpacing: 2.0,
+                  fontWeight: FontWeight.bold),
             ),
-            Dash(),
+            FutureBuilder(
+                future: GlobalCases.getWorldStats('world'),
+                builder: (context, snapshot){
+                  if(snapshot.data != null){
+                    return Dash(snapshot.data);
+                  }
+                  return CircularProgressIndicator();
+                }
+            ),
           ],
         ),
       ),

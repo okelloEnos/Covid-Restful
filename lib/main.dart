@@ -14,10 +14,10 @@ void main() {
       'rank': (context) => Ranking(),
     },
     theme: new ThemeData(
-      primaryColor: Color(0xFFff2b4a),
-      primaryColorLight: Color(0xFFff66b0),
-      primaryColorDark: Color(0xFFff0203),
-      accentColor:  Color(0xFFFF1493),
+      primaryColor: Color(0xff939090),
+      primaryColorLight: Color(0xff939090),
+      primaryColorDark: Color(0xff939090),
+      accentColor:  Color(0xFF090909),
     ),
   ));
 }

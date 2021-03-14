@@ -46,14 +46,8 @@ class _DropDownState extends State<DropDown> {
                     value: item,
                     child: new Text(item),
                 );
-              },).toList(),
-        // items: <String> ['Based on Confirmed Cases', 'Based on Recovered Cases', 'Based on Death Cases']
-        // .map <DropdownMenuItem <String>> ((String value) {
-        //   return DropdownMenuItem <String> (
-        //     value: value,
-        //     child: Text(value),
-        //   );
-    // }).toList()
+              },
+      ).toList(),
     );
   }
 }

@@ -1,12 +1,26 @@
+import 'package:covid19/model/world.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dash extends StatefulWidget {
+  final World receivedStats;
+
+  const Dash(this.receivedStats);
+
   @override
   _DashState createState() => _DashState();
 }
 
 class _DashState extends State<Dash> {
+  World stats;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    stats = widget.receivedStats;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,8 +43,8 @@ class _DashState extends State<Dash> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                   ),),
-                  Text('new = 56'),
-                  Text('total = 600'),
+                  Text('New Confirmed Cases : ${stats.newCasesText.isEmpty? 'Not Provided' : stats.newCasesText}'),
+                  Text('Total Confirmed Cases : ${stats.totalCasesText.isEmpty ? 'Not Provided' : stats.totalCasesText}'),
                 ],
               ),
             ),
@@ -54,8 +68,8 @@ class _DashState extends State<Dash> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                   ),),
-                  Text('new = 30'),
-                  Text('total = 234'),
+                  Text('New Recovered Cases : Not Provided'),
+                  Text('Total Recovered Cases : ${stats.totalRecoveredText.isEmpty ? 'Not Provided' : stats.totalRecoveredText}'),
                 ],
               ),
             ),
@@ -79,8 +93,8 @@ class _DashState extends State<Dash> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                   ),),
-                  Text('new = 13'),
-                  Text('total = 174'),
+                  Text('New Death Cases : ${stats.newDeathsText.isEmpty ? 'Not Provided' : stats.newDeathsText}'),
+                  Text('Total Death Cases : ${stats.totalDeathsText.isEmpty ? 'Not Provided' : stats.totalDeathsText}'),
                 ],
               ),
             ),
