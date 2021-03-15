@@ -36,7 +36,7 @@ class _CountryState extends State<Country> {
     var list = countryList;
     return Scaffold(
       appBar: AppBar(
-        title: Text('$Country Covid Stats'),
+        title: Text('$Country COVID Stats'),
         centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back_sharp), onPressed: () {
           Navigator.pop(context, false);

@@ -24,8 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   toggle_switch: ^0.1.8
-  textfield_search: ^0.8.0
-  flappy_search_bar: ^1.7.2
   autocomplete_textfield: ^1.7.3
   http: ^0.13.0
 

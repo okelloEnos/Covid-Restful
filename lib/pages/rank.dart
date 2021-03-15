@@ -1,6 +1,7 @@
 import 'package:covid19/widget/dropDown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:covid19/service/countryService.dart';
 
 class Ranking extends StatefulWidget {
   @override
@@ -9,9 +10,25 @@ class Ranking extends StatefulWidget {
 
 class _RankingState extends State<Ranking> {
   var rankList = ['Kenya', 'Uganda', 'Tanzania', 'Kazhakastan', 'Sudan'];
+  var rankingList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    CountryService.getCountries().then((list) {
+      list.forEach((country) {
+        setState(() {
+        rankingList.add(country.totalCasesText);
+        });
+        });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    print('Rank # ${rankingList.toString()}');
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Case Ranking'),
@@ -32,6 +49,7 @@ class _RankingState extends State<Ranking> {
                   return Container(
                     height: 50.0,
                     child: Card(
+                      color: Colors.grey,
                       child: Text(rankList[position]),
                     ),
                   );

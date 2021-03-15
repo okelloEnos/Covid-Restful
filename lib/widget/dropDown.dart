@@ -32,7 +32,7 @@ class _DropDownState extends State<DropDown> {
         style: const TextStyle(color: Colors.black),
         underline: Container(
           height: 2,
-          color: Colors.blue,
+          color: Colors.grey,
         ),
         onChanged: (String newValue){
         setState(() {

@@ -35,7 +35,14 @@ class _HomeState extends State<Home> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 150),
+            SizedBox(height: 50),
+            Text(
+              "Click on Your Category",
+              style: TextStyle(
+                  fontSize: 20.0,
+                  wordSpacing: 2.0,
+                  fontWeight: FontWeight.bold),
+            ),
             Center(
               child: ToggleSwitch(
                 minWidth: 150.0,
@@ -47,37 +54,23 @@ class _HomeState extends State<Home> {
                 initialLabelIndex: currentBtn,
                 labels: ['Global', 'Per Country', 'Ranking'],
                 onToggle: (index) async {
-                  // List<CountryName> countryList = await retrievedCountryList();
-
                   setState((){
                     currentBtn = index;
                     if (currentBtn == 1) {
-                        statTitle = 'Per Country Stats';
-
                          Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => Country()),
                         );
-                      // Navigator.of(context).push('country');
                     } else if (currentBtn == 2) {
-                      statTitle = 'Cases Ranks Per Country';
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Ranking()));
                     } else {
-                      statTitle = 'Global Stats';
                     }
                   });
                 },
               ),
             ),
-            SizedBox(height: 40),
-            Text(
-              "$statTitle",
-              style: TextStyle(
-                  fontSize: 20.0,
-                  wordSpacing: 2.0,
-                  fontWeight: FontWeight.bold),
-            ),
+
             FutureBuilder(
                 future: GlobalCases.getWorldStats('world'),
                 builder: (context, snapshot){
