@@ -2,15 +2,8 @@
 
 A Covid 19 App that Shows Covid cases globally and per country
 
-## Getting Started
+Demo:
 
-This project is a starting point for a Flutter application.
+[![Blue Collar App](https://i9.ytimg.com/vi/04LIHmsjCLk/mq2.jpg?sqp=COj9u4IG&rs=AOn4CLDarRgfU9FTER_yaAShXZlDuhYJpA)](https://www.youtube.com/watch?v=04LIHmsjCL)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
